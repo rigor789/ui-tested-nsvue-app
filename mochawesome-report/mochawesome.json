@@ -1,0 +1,248 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 0,
+    "pending": 0,
+    "failures": 3,
+    "start": "2019-12-27T15:33:22.921Z",
+    "end": "2019-12-27T15:35:56.064Z",
+    "duration": 153143,
+    "testsRegistered": 3,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "11c547a3-9c80-4734-b744-b3adb082914a",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [
+        {
+          "title": "\"before all\" hook: start server",
+          "fullTitle": "\"before all\" hook: start server",
+          "timedOut": false,
+          "duration": 3110,
+          "state": null,
+          "speed": null,
+          "pass": false,
+          "fail": false,
+          "pending": false,
+          "context": "[\n  \"on_server_started\",\n  \"./on_server_started.png\"\n]",
+          "code": "nsAppium.nsCapabilities.testReporter.context = this;\nawait nsAppium.startServer();",
+          "err": {},
+          "uuid": "89923ea3-021c-4435-acd7-57caa2844647",
+          "parentUUID": "11c547a3-9c80-4734-b744-b3adb082914a",
+          "isHook": true,
+          "skipped": false
+        }
+      ],
+      "afterHooks": [
+        {
+          "title": "\"after all\" hook: stop appium server",
+          "fullTitle": "\"after all\" hook: stop appium server",
+          "timedOut": false,
+          "duration": 354,
+          "state": null,
+          "speed": null,
+          "pass": false,
+          "fail": false,
+          "pending": false,
+          "context": null,
+          "code": "await nsAppium.stopServer();",
+          "err": {},
+          "uuid": "5c1c86f3-f297-40e5-a799-96c099e4455c",
+          "parentUUID": "11c547a3-9c80-4734-b744-b3adb082914a",
+          "isHook": true,
+          "skipped": false
+        }
+      ],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "42e99f8c-403b-4cae-9db3-089c36f0d060",
+          "title": "sample scenario",
+          "fullFile": "/Users/rigor789/Code/ui-tested-nsvue-app/e2e/sample.e2e-spec.js",
+          "file": "/e2e/sample.e2e-spec.js",
+          "beforeHooks": [
+            {
+              "title": "\"before all\" hook",
+              "fullTitle": "sample scenario \"before all\" hook",
+              "timedOut": false,
+              "duration": 132027,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": "[\n  \"appium_driver_started\",\n  \"./appium_driver_started.png\"\n]",
+              "code": "nsAppium.nsCapabilities.testReporter.context = this;\ndriver = await nsAppium.createDriver();",
+              "err": {},
+              "uuid": "aac48b32-5097-4b2b-9a1d-76ebd15240d3",
+              "parentUUID": "42e99f8c-403b-4cae-9db3-089c36f0d060",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after all\" hook",
+              "fullTitle": "sample scenario \"after all\" hook",
+              "timedOut": false,
+              "duration": 1442,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": "[\n  \"appium_driver_quit\",\n  \"./appium_driver_quit.png\",\n  \"on_server_stopped\",\n  \"./on_server_stopped.png\"\n]",
+              "code": "await driver.quit();\nconsole.log(\"Quit driver!\");",
+              "err": {},
+              "uuid": "52e0ae41-4c57-4b0f-b536-7dfdb52a6ab9",
+              "parentUUID": "42e99f8c-403b-4cae-9db3-089c36f0d060",
+              "isHook": true,
+              "skipped": false
+            },
+            {
+              "title": "\"after each\" hook",
+              "fullTitle": "sample scenario \"after each\" hook",
+              "timedOut": false,
+              "duration": 559,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "if (this.currentTest.state === \"failed\") {\n    await driver.logTestArtifacts(this.currentTest.title);\n}",
+              "err": {},
+              "uuid": "1f81cca2-dfb3-43d9-b8f5-4a0b6c74230f",
+              "parentUUID": "42e99f8c-403b-4cae-9db3-089c36f0d060",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "should find an element by text",
+              "fullTitle": "sample scenario should find an element by text",
+              "timedOut": false,
+              "duration": 441,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": "[\n  \"should_find_an_element_by_text\",\n  \"./should_find_an_element_by_text.png\"\n]",
+              "code": "let label = await driver.findElementByAccessibilityId('welcomeLabel');\nassert.isTrue(await label.isDisplayed());\nassertContains(await label.text(), 'Blank {N}-Vue app')\nawait label.click()\nawait label.refetch()\nassertContains(await label.text(), 'Tapped!')\nawait label.click()\nawait label.refetch()\nassertContains(await label.text(), 'Again')",
+              "err": {
+                "message": "AssertionError: Expected 'welcomeLabel' to contain 'Blank {N}-Vue app'",
+                "estack": "AssertionError: Expected 'welcomeLabel' to contain 'Blank {N}-Vue app'\n    at assertContains (e2e/sample.e2e-spec.js:6:12)\n    at Context.<anonymous> (e2e/sample.e2e-spec.js:33:9)\n    at processTicksAndRejections (internal/process/task_queues.js:97:5)",
+                "diff": null
+              },
+              "uuid": "3f794f4f-e27d-4319-a5de-3911260c737d",
+              "parentUUID": "42e99f8c-403b-4cae-9db3-089c36f0d060",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should navigate to other",
+              "fullTitle": "sample scenario should navigate to other",
+              "timedOut": false,
+              "duration": 8241,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": "[\n  \"should_navigate_to_other\",\n  \"./should_navigate_to_other.png\"\n]",
+              "code": "await driver.restartApp()\nlet button = await driver.findElementByAccessibilityId('gotoOtherButton')\nassert.isTrue(await button.isDisplayed());\nawait button.click()\nlet label = await driver.findElementByAccessibilityId('otherPageLabel');\nassertContains(await label.text(), 'Other page')\nbutton = await driver.findElementByAccessibilityId('goBackButton')\nassert.isTrue(await button.isDisplayed());\nawait button.click()\nlabel = await driver.findElementByAccessibilityId('welcomeLabel');\nassert.isTrue(await label.isDisplayed());\nassertContains(await label.text(), 'Blank {N}-Vue app')",
+              "err": {
+                "message": "AssertionError: Expected 'otherPageLabel' to contain 'Other page'",
+                "estack": "AssertionError: Expected 'otherPageLabel' to contain 'Other page'\n    at assertContains (e2e/sample.e2e-spec.js:6:12)\n    at Context.<anonymous> (e2e/sample.e2e-spec.js:56:9)\n    at processTicksAndRejections (internal/process/task_queues.js:97:5)",
+                "diff": null
+              },
+              "uuid": "913c437b-8c69-48e5-9407-f107c8177914",
+              "parentUUID": "42e99f8c-403b-4cae-9db3-089c36f0d060",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should render a list with multiple v-templates",
+              "fullTitle": "sample scenario should render a list with multiple v-templates",
+              "timedOut": false,
+              "duration": 5339,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": "[\n  \"should_render_a_list_with_multiple_v-templates\",\n  \"./should_render_a_list_with_multiple_v-templates.png\"\n]",
+              "code": "let button = await driver.findElementByAccessibilityId('gotoListButton')\nawait button.click()\nlet firstLabel = await driver.findElementByText('default template for item first')\nlet secondLabel = await driver.findElementByText('second template for item second')\nlet thirdLabel = await driver.findElementByText('default template for item third')\nassert.isTrue(await firstLabel.isDisplayed())\nassert.isTrue(await secondLabel.isDisplayed())\nassert.isTrue(await thirdLabel.isDisplayed())",
+              "err": {
+                "message": "Error: [waitForElementByAccessibilityId(\"gotoListButton\",5000)] Element condition wasn't satisfied!",
+                "estack": "Error: [waitForElementByAccessibilityId(\"gotoListButton\",5000)] Element condition wasn't satisfied!\n    at /Users/rigor789/Code/ui-tested-nsvue-app/node_modules/wd/lib/commands.js:979:12\n    at /Users/rigor789/Code/ui-tested-nsvue-app/node_modules/wd/lib/commands.js:884:11\n    at /Users/rigor789/Code/ui-tested-nsvue-app/node_modules/wd/lib/commands.js:966:13\n    at /Users/rigor789/Code/ui-tested-nsvue-app/node_modules/wd/node_modules/async/dist/async.js:3888:9\n    at /Users/rigor789/Code/ui-tested-nsvue-app/node_modules/wd/node_modules/async/dist/async.js:473:16\n    at replenish (node_modules/wd/node_modules/async/dist/async.js:1006:25)\n    at /Users/rigor789/Code/ui-tested-nsvue-app/node_modules/wd/node_modules/async/dist/async.js:1016:9\n    at eachOfLimit (node_modules/wd/node_modules/async/dist/async.js:1041:24)\n    at /Users/rigor789/Code/ui-tested-nsvue-app/node_modules/wd/node_modules/async/dist/async.js:1046:16\n    at _parallel (node_modules/wd/node_modules/async/dist/async.js:3879:5)\n    at Object.series (node_modules/wd/node_modules/async/dist/async.js:4735:5)\n    at /Users/rigor789/Code/ui-tested-nsvue-app/node_modules/wd/lib/commands.js:964:15\n    at /Users/rigor789/Code/ui-tested-nsvue-app/node_modules/wd/lib/promise-webdriver.js:52:11\n    at _fulfilled (node_modules/q/q.js:854:54)\n    at /Users/rigor789/Code/ui-tested-nsvue-app/node_modules/q/q.js:883:30\n    at Promise.promise.promiseDispatch (node_modules/q/q.js:816:13)\n    at /Users/rigor789/Code/ui-tested-nsvue-app/node_modules/q/q.js:624:44\n    at runSingle (node_modules/q/q.js:137:13)\n    at flush (node_modules/q/q.js:125:13)\n    at processTicksAndRejections (internal/process/task_queues.js:79:11)",
+                "diff": null
+              },
+              "uuid": "f390151c-f3eb-4770-b9ef-5cd6e2c2587d",
+              "parentUUID": "42e99f8c-403b-4cae-9db3-089c36f0d060",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "3f794f4f-e27d-4319-a5de-3911260c737d",
+            "913c437b-8c69-48e5-9407-f107c8177914",
+            "f390151c-f3eb-4770-b9ef-5cd6e2c2587d"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 14021,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 999999
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 999999
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "6.2.2"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": true,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false
+      },
+      "version": "4.1.0"
+    },
+    "marge": {
+      "options": {
+        "quiet": "true",
+        "html": "true",
+        "inline": "true",
+        "autoOpen": "true"
+      },
+      "version": "4.1.0"
+    }
+  }
+}

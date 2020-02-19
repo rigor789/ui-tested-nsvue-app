@@ -1,0 +1,5 @@
+{
+    "setupFilesAfterEnv": ["./setup.js"],
+    "testEnvironment": "node",
+    "verbose": true
+}

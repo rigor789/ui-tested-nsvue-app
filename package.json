@@ -1,0 +1,64 @@
+{
+  "nativescript": {
+    "id": "org.nativescript.uitestednsvueapp",
+    "tns-android": {
+      "version": "6.3.0"
+    },
+    "tns-ios": {
+      "version": "6.3.0"
+    }
+  },
+  "description": "NativeScript Application",
+  "license": "SEE LICENSE IN <your-license-filename>",
+  "repository": "<fill-your-repository-here>",
+  "dependencies": {
+    "@nativescript/theme": "2.2.1",
+    "nativescript-vue": "2.5.0-alpha.3",
+    "tns-core-modules": "6.3.2"
+  },
+  "devDependencies": {
+    "@babel/core": "7.7.7",
+    "@babel/preset-env": "7.7.7",
+    "@types/chai": "4.2.7",
+    "@types/mocha": "5.2.7",
+    "@types/node": "13.1.1",
+    "babel-loader": "8.0.6",
+    "chai": "4.2.0",
+    "detox": "^14.9.2",
+    "jasmine": "^3.5.0",
+    "jest": "^24.9.0",
+    "mocha": "6.2.2",
+    "mocha-junit-reporter": "1.23.1",
+    "mocha-multi": "1.1.3",
+    "mochawesome": "4.1.0",
+    "nativescript-dev-appium": "6.1.3",
+    "nativescript-dev-webpack": "1.4.0",
+    "nativescript-vue-template-compiler": "2.4.0",
+    "node-sass": "4.13.0",
+    "vue-loader": "15.8.3"
+  },
+  "gitHead": "94f487c5279f7abc2cc61cb48e357d1756865a40",
+  "readme": "NativeScript Application",
+  "scripts": {
+    "e2e": "node ./node_modules/nativescript-dev-appium/check-dev-deps.js &&  mocha --opts ./e2e/config/mocha.opts "
+  },
+  "detox": {
+    "test-runner": "jest",
+    "configurations": {
+      "android.emu": {
+        "binaryPath": "platforms/android/app/build/outputs/apk/debug/app-debug.apk",
+        "build": "./build.sh",
+        "type": "android.emulator",
+        "device": {
+          "avdName": "Pixel_3_XL_API_29"
+        }
+      },
+      "ios.sim": {
+        "binaryPath": "platforms/ios/build/Debug-iphonesimulator/uitestednsvueapp.app",
+        "build": "tns build ios",
+        "type": "ios.simulator",
+        "name": "iPhone 6"
+      }
+    }
+  }
+}

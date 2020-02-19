@@ -1,0 +1,32 @@
+// Add your native dependencies here:
+
+repositories {
+  maven { url "$rootDir/../../node_modules/detox/Detox-android"}
+}
+
+// Uncomment to add recyclerview-v7 dependency
+dependencies {
+//	implementation 'com.android.support:recyclerview-v7:+'
+  androidTestImplementation('com.wix:detox:+') { transitive = true }
+  androidTestImplementation 'junit:junit:4.12'
+  androidTestImplementation 'com.squareup.okhttp3:okhttp:+'
+  implementation 'androidx.annotation:annotation:1.1.0'
+}
+
+// If you want to add something to be applied before applying plugins' include.gradle files
+// e.g. project.ext.googlePlayServicesVersion = "15.0.1"
+// create a file named before-plugins.gradle in the current directory and place it there
+
+android {
+  defaultConfig {
+    minSdkVersion 18
+    generatedDensities = []
+
+    // This will later be used to control the test apk build type
+    testBuildType System.getProperty('testBuildType', 'debug')
+    testInstrumentationRunner 'com.tns.DetoxTestRunner'
+  }
+  aaptOptions {
+    additionalParameters "--no-version-vectors"
+  }
+}
