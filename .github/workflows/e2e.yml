@@ -42,10 +42,11 @@ jobs:
         run: detox build -c ${{ matrix.config }}
 
       - name: Test
-        run: detox test -c ${{ matrix.config }}
+        run: detox test -c ${{ matrix.config }} --take-screenshots failing --artifacts-location ./.artifacts/
 
-#      - name: Upload Artifacts
-#        uses: actions/upload-artifact@v1
-#        with:
-#          name: ${{ matrix.config }}
-#          path: artifacts
+      - name: Upload Artifacts
+        if: failure()
+        uses: actions/upload-artifact@v1
+        with:
+          name: ${{ matrix.config }}-artifacts
+          path: ./.artifacts
