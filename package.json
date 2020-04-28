@@ -49,7 +49,7 @@
         "binaryPath": "platforms/ios/build/Debug-iphonesimulator/uitestednsvueapp.app",
         "build": "tns build ios",
         "type": "ios.simulator",
-        "name": "iPhone SE (2nd generation)"
+        "name": "iPhone 11 Pro"
       }
     }
   }
