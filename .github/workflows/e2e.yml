@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        config: ['ios.sim', 'android.emu']
+        config: ['ios.sim']
         nativescript: ['6.5.0']
 
     steps:
@@ -49,8 +49,7 @@ jobs:
           create avd \
           --force \
           -n Pixel_3_XL_API_29 \
-          --abi 'google_apis/x86_64' \
-          --package "system-images;android-29;google_apis;x86_64"
+          --package "system-images;android-29;"
 
       - name: Test
         run: detox test -c ${{ matrix.config }} --take-screenshots failing --artifacts-location ./.artifacts/ --cleanup
