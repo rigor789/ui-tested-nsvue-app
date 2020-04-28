@@ -5,6 +5,7 @@ describe('NativeScript-Vue basics', () => {
         await wait(2000)
         await device.launchApp()
         await wait(2000)
+        // await device.takeScreenshot('app launched')
     })
 
     it('should allow tapping the welcome label', async () => {

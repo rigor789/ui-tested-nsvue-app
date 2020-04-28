@@ -5,7 +5,7 @@
       "version": "6.3.0"
     },
     "tns-ios": {
-      "version": "6.3.0"
+      "version": "7.0.0-beta.3-v8-2020-04-03-150451-02"
     }
   },
   "description": "NativeScript Application",
@@ -24,7 +24,7 @@
     "@types/node": "13.1.1",
     "babel-loader": "8.0.6",
     "chai": "4.2.0",
-    "detox": "^14.9.2",
+    "detox": "16.3.0",
     "jasmine": "^3.5.0",
     "jest": "^24.9.0",
     "mocha": "6.2.2",
@@ -57,7 +57,7 @@
         "binaryPath": "platforms/ios/build/Debug-iphonesimulator/uitestednsvueapp.app",
         "build": "tns build ios",
         "type": "ios.simulator",
-        "name": "iPhone 6"
+        "name": "iPhone SE (2nd generation)"
       }
     }
   }

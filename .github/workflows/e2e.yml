@@ -1,0 +1,41 @@
+name: e2e
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  test:
+    name: Test
+    runs-on: macos-latest
+
+    strategy:
+      matrix:
+        config: ['ios.sim']
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Install
+        run: |
+          brew tap wix/brew
+          brew install applesimutils
+          npm i -g detox-cli
+          npm i -g nativescript --ignore-scripts
+          tns usage-reporting disable
+          tns error-reporting disable
+          npm ci
+
+      - name: Build
+        run: detox build -c ${{ matrix.config }}
+
+      - name: Test
+        run: detox test -c ${{ matrix.config }}
+
+#      - name: Upload Artifacts
+#        uses: actions/upload-artifact@v1
+#        with:
+#          name: ${{ matrix.config }}
+#          path: artifacts
