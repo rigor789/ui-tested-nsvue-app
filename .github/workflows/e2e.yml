@@ -38,6 +38,10 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
+      - name: Create Emulator
+        if: matrix.config == 'android.emu'
+        run: echo no | avdmanager create avd --force -n Pixel_3_XL_API_29 -k "system-image;android-29;google_apis;arm64-v8a"
+
       - name: Build
         run: detox build -c ${{ matrix.config }}
 
