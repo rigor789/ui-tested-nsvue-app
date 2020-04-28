@@ -1,9 +1,9 @@
 name: e2e
 
-on:
-  push:
-    branches:
-      - master
+on: push
+#  push:
+#    branches:
+#      - master
 
 jobs:
   test:
