@@ -43,7 +43,7 @@ jobs:
         run: detox build -c ${{ matrix.config }}
 
       - name: Test
-          if: matrix.config == 'android.emu'
+          if: ${{ matrix.config }} == 'android.emu'
           uses: reactivecircus/android-emulator-runner@v2
           with:
             api-level: 29
@@ -52,7 +52,7 @@ jobs:
             script: detox test -c ${{ matrix.config }} --take-screenshots failing --artifacts-location ./.artifacts/
 
       - name: Test
-        if: matrix.config == 'ios.sim'
+        if: ${{ matrix.config }} == 'ios.sim'
         run: detox test -c ${{ matrix.config }} --take-screenshots failing --artifacts-location ./.artifacts/
 
       - name: Upload Artifacts
