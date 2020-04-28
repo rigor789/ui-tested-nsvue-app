@@ -42,18 +42,18 @@ jobs:
       - name: Build
         run: detox build -c ${{ matrix.config }}
 
-      - name: Test
+      - name: Create Emulator
         if: matrix.config == 'android.emu'
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: 29
-          target: google_apis
-          arch: x86_64
-          script: detox test -c ${{ matrix.config }} --take-screenshots failing --artifacts-location ./.artifacts/
+        run: |
+          echo no | $ANDROID_HOME/tools/bin/avdmanager \
+          create avd \
+          --force \
+          -n Pixel_3_XL_API_29 \
+          --abi 'google_apis/x86_64' \
+          --package "system-images;android-29;google_apis;x86_64"
 
       - name: Test
-        if: matrix.config == 'ios.sim'
-        run: detox test -c ${{ matrix.config }} --take-screenshots failing --artifacts-location ./.artifacts/
+        run: detox test -c ${{ matrix.config }} --take-screenshots failing --artifacts-location ./.artifacts/ --cleanup
 
       - name: Upload Artifacts
         if: failure()
