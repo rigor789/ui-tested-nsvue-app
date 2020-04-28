@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        config: ['ios.sim']
+        config: ['ios.sim', 'android.emu']
 
     steps:
       - name: Checkout

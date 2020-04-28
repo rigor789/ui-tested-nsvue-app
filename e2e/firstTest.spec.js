@@ -47,8 +47,4 @@ describe('NativeScript-Vue basics', () => {
         await expect(element(by.text('Item 1'))).toBeNotVisible()
         await expect(element(by.text('Item 10'))).toBeVisible()
     })
-
-    it('should upload failed artifacts', async () => {
-        await expect(element(by.text('Non existent.'))).toBeVisible()
-    })
 })
