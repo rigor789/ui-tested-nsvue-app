@@ -13,6 +13,7 @@ jobs:
     strategy:
       matrix:
         config: ['ios.sim', 'android.emu']
+        nativescript: ['6.5.0']
 
     steps:
       - name: Checkout
@@ -30,7 +31,7 @@ jobs:
       - name: Install NativeScript
         run: |
           python -m pip install --upgrade pip six
-          npm i -g nativescript --ignore-scripts
+          npm i -g nativescript@${{ matrix.nativescript }} --ignore-scripts
           tns usage-reporting disable
           tns error-reporting disable
           tns doctor
@@ -38,14 +39,20 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
-      - name: Create Emulator
-        if: matrix.config == 'android.emu'
-        run: echo no | avdmanager create avd --force -n Pixel_3_XL_API_29 -k "system-image;android-29;google_apis;arm64-v8a"
-
       - name: Build
         run: detox build -c ${{ matrix.config }}
 
       - name: Test
+          if: matrix.config == 'android.emu'
+          uses: reactivecircus/android-emulator-runner@v2
+          with:
+            api-level: 29
+            target: google_apis
+            arch: x86_64
+            script: detox test -c ${{ matrix.config }} --take-screenshots failing --artifacts-location ./.artifacts/
+
+      - name: Test
+        if: matrix.config == 'ios.sim'
         run: detox test -c ${{ matrix.config }} --take-screenshots failing --artifacts-location ./.artifacts/
 
       - name: Upload Artifacts
