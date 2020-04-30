@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        config: ['ios.sim']
+        config: ['ios.sim', 'android.emu']
         nativescript: ['6.5.0']
 
     steps:
@@ -44,15 +44,23 @@ jobs:
 
       - name: Create Emulator
         if: matrix.config == 'android.emu'
-        run: |
-          echo no | $ANDROID_HOME/tools/bin/avdmanager \
-          create avd \
-          --force \
-          -n Pixel_3_XL_API_29 \
-          --package "system-images;android-29;"
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 29
+          script: |
+            detox test -c ${{ matrix.config }} \
+            --device-name test \
+            --take-screenshots failing \
+            --artifacts-location ./.artifacts/ \
+            --cleanup
 
       - name: Test
-        run: detox test -c ${{ matrix.config }} --take-screenshots failing --artifacts-location ./.artifacts/ --cleanup
+        if: matrix.config == 'ios.sim'
+        run: |
+          detox test -c ${{ matrix.config }} \
+          --take-screenshots failing \
+          --artifacts-location ./.artifacts/ \
+          --cleanup
 
       - name: Upload Artifacts
         if: failure()
