@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        config: ['ios.sim', 'android.emu']
+        config: ['android.emu']
         nativescript: ['6.5.0']
 
     steps:
@@ -44,10 +44,7 @@ jobs:
 
       - name: Create Emulator
         if: matrix.config == 'android.emu'
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: 29
-          script: adb devices
+        uses: rigor789/action-create-emulator@master
 
       - name: Test Android
         if: matrix.config == 'android.emu'
