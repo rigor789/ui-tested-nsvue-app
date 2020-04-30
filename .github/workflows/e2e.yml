@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        config: ['android.emu']
+        config: ['ios.sim', 'android.emu']
         nativescript: ['6.5.0']
 
     steps:
