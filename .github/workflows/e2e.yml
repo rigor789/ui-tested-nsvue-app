@@ -47,17 +47,12 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 29
-          script: |
-            detox test -c ${{ matrix.config }} \
-            --device-name test \
-            --take-screenshots failing \
-            --artifacts-location ./.artifacts/ \
-            --cleanup
+          script: adb devices
 
       - name: Test
-        if: matrix.config == 'ios.sim'
         run: |
           detox test -c ${{ matrix.config }} \
+          ${{ matrix.config == 'android.emu' ? '--device-name test' : '' }} \
           --take-screenshots failing \
           --artifacts-location ./.artifacts/ \
           --cleanup
