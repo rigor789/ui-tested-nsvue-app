@@ -49,10 +49,19 @@ jobs:
           api-level: 29
           script: adb devices
 
-      - name: Test
+      - name: Test Android
+        if: matrix.config == 'android.emu'
         run: |
           detox test -c ${{ matrix.config }} \
-          ${{ matrix.config == 'android.emu' ? '--device-name test' : '' }} \
+          --device-name test \
+          --take-screenshots failing \
+          --artifacts-location ./.artifacts/ \
+          --cleanup
+
+      - name: Test iOS
+        if: matrix.config == 'ios.sim'
+        run: |
+          detox test -c ${{ matrix.config }} \
           --take-screenshots failing \
           --artifacts-location ./.artifacts/ \
           --cleanup
