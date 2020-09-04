@@ -34,7 +34,7 @@
     "nativescript-dev-appium": "6.1.3",
     "nativescript-dev-webpack": "1.4.0",
     "nativescript-vue-template-compiler": "2.4.0",
-    "node-sass": "4.13.0",
+    "node-sass": "4.13.1",
     "vue-loader": "15.8.3"
   },
   "gitHead": "94f487c5279f7abc2cc61cb48e357d1756865a40",
